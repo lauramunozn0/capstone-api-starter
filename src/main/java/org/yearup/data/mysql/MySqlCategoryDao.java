@@ -3,10 +3,15 @@ package org.yearup.data.mysql;
 import org.springframework.stereotype.Component;
 import org.yearup.data.CategoryDao;
 import org.yearup.models.Category;
+import org.yearup.models.Product;
 
 import javax.sql.DataSource;
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -21,7 +26,26 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     public List<Category> getAllCategories()
     {
         // get all categories
-        return null;
+        List<Category> categories = new ArrayList<>();
+        String  sql = "SELECT * FROM categories ORDER BY name";
+
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet row = statement.executeQuery();
+
+            while (row.next())
+            {
+                Category category = mapRow(row);
+                categories.add(category);
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+
+        return categories;
     }
 
     @Override
@@ -34,6 +58,34 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     @Override
     public Category create(Category category)
     {
+        String sql = "INSERT INTO categories (name, description) VALUES (?, ?)";
+
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement =
+                    connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+
+            statement.setString(1, category.getName());
+            statement.setString(2, category.getDescription());
+
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected > 0)
+            {
+                ResultSet generatedKeys = statement.getGeneratedKeys();
+
+                if (generatedKeys.next())
+                {
+                    int newId = generatedKeys.getInt(1);
+                    return getById(newId);
+                }
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+
         // create a new category
         return null;
     }
