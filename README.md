@@ -1,6 +1,6 @@
 [README.md](https://github.com/user-attachments/files/24250990/README.md)
-# Project Title
 Clothing Store
+
 ## Description of the Project
 This project is a backend e-commerce application for a Clothing Store.
 I worked as a backend developer on an existing Spring Boot API that uses a MySQL database for data storage. 
