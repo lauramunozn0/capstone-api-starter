@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("categories")
 @CrossOrigin
 
-    // http://localhost:8080/categories
+
 
 public class CategoriesController
 {
