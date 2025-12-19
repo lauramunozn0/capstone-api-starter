@@ -27,10 +27,13 @@ All API endpoints were tested using Postman/Insomnia, with the provided front-en
 Java, springboot, Insomnia and mysql.
 
 ## Demo
+-Phase 1-
+
 ![Phase 1 ](https://github.com/user-attachments/assets/60264131-f1e6-4c18-9df6-f8f11ae6172e)
 
 <img width="1418" height="839" alt="Phase 1 I" src="https://github.com/user-attachments/assets/7e785916-db7b-4bb1-8df1-9e5707b74cd2" />
 
+-Phase 2-
 
 ![Phase 2](https://github.com/user-attachments/assets/9a7d78fa-214a-456d-9259-ca03b6fa2646)
 
