@@ -1,4 +1,6 @@
 [README.md](https://github.com/user-attachments/files/24250990/README.md)
+
+
 ##Clothing Store
 
 ## Description of the Project
@@ -8,8 +10,6 @@ The front-end webstore was already built, and my role was to modify and extend t
 All API endpoints were tested using Postman/Insomnia, with the provided front-end used for validation when needed.
 
 ## User Stories
-
-List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
 
 -As a user I want to view all available product categories, so that I can browse the store easily.
 -As a user I want to view all products in a selected category, so that I can narrow down my choices.
